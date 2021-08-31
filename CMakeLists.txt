@@ -18,7 +18,12 @@
 # SOFTWARE.
 
 cmake_minimum_required(VERSION 3.0.0)
+
 project(kOS.libc LANGUAGES C VERSION 1.0.0)
+
+if(NOT ${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
+    message(FATAL_ERROR "kOS.libc requires to be built using LLVM/clang.")
+endif()
 
 add_library(kOS.libc STATIC
     ${CMAKE_CURRENT_LIST_DIR}/Includes/sys/cdefs.h
@@ -42,6 +47,11 @@ add_library(kOS.libc STATIC
     ${CMAKE_CURRENT_LIST_DIR}/Sources/string/strlen.c
 )
 
-target_compile_options(kOS.libc PUBLIC -fshort-wchar -ffreestanding)
+target_compile_options(kOS.libc
+    PUBLIC -fshort-wchar -fno-builtin -ffreestanding -nostdinc -nostdinc++
+    PRIVATE -Wall -Werror -Wno-unused-command-line-argument
+)
 
 target_include_directories(kOS.libc PUBLIC ${CMAKE_CURRENT_LIST_DIR}/Includes)
+
+target_link_options(kOS.libc PRIVATE -nostdlib)
