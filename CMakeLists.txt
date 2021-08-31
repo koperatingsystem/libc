@@ -42,6 +42,6 @@ add_library(kOS.libc STATIC
     ${CMAKE_CURRENT_LIST_DIR}/Sources/string/strlen.c
 )
 
-target_compile_options(kOS.libc PUBLIC -fshort-wchar)
+target_compile_options(kOS.libc PUBLIC -fshort-wchar -ffreestanding)
 
 target_include_directories(kOS.libc PUBLIC ${CMAKE_CURRENT_LIST_DIR}/Includes)
