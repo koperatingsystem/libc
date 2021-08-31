@@ -48,8 +48,8 @@ add_library(kOS.libc STATIC
 )
 
 target_compile_options(kOS.libc
-    PUBLIC -fshort-wchar -fno-builtin -ffreestanding -nostdinc -nostdinc++
-    PRIVATE -Wall -Werror -Wno-unused-command-line-argument
+    PUBLIC -fshort-wchar -fno-builtin -ffreestanding -nostdinc
+    PRIVATE -Wall -Werror
 )
 
 target_include_directories(kOS.libc PUBLIC ${CMAKE_CURRENT_LIST_DIR}/Includes)
