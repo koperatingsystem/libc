@@ -17,16 +17,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if defined(__is_libk)
-#include <Kernel/TerminalIO.h>
-#endif
-
 #include <stdio.h>
 
-int putchar(int intc) {
-#if defined(__is_libk)
-	Terminal_Put_Character((char)intc);
-#endif
-
+int putchar(int intc)
+{
+    // TODO: allow this to be defined by the environment itself (i.e an outside library provides this method and we fetch it through an extern)
 	return intc;
 }

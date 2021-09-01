@@ -64,8 +64,8 @@ int printf(const char* restrict format, ...)
         case 'c':
             format++;
 
-			char c = (char)va_arg(parameters, int /* char promotes to int */);
-			if (!maxrem) return -1;
+			char c = (char)va_arg(parameters, int);
+			if (!maxrem) return -1; // TODO: Set errno to EOVERFLOW.
 
 			if (!print(&c, sizeof(c))) return -1;
 
