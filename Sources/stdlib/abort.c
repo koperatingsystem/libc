@@ -23,13 +23,6 @@
 
 __attribute__((__noreturn__)) void abort(void)
 {
-#if defined(__is_libk)
-	// TODO: kernel panic
-	printf("kernel: panic: abort()\n");
-#else
-	// TODO: Terminate with SIGABRT.
 	printf("abort()\n");
-#endif
-
 	while (true) ;
 }

@@ -22,8 +22,9 @@
 #include <sys/cdefs.h>
 #include <stdint.h>
 
-// TODO: define more stuff:tm:
+// TODO: add more stuff to comply with C11 / C17
 
 #define NULL ((void*)0)
 
-typedef uint64_t size_t; // TODO: change this to uint64_t once we make a 64 bit version
+typedef __SIZE_TYPE__   size_t;
+#define SIZE_MAX        __SIZE_MAX__

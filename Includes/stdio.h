@@ -21,6 +21,8 @@
 
 #include <sys/cdefs.h>
 
+// TODO: add more stuff to comply with C11 / C17
+
 #define EOF (-1)
 
 #ifdef __cplusplus

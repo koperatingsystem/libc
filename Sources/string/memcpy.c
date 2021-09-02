@@ -21,10 +21,10 @@
 
 void* memcpy(void* restrict destination, const void* restrict source, size_t size)
 {
-	unsigned char* destination_pointer  = (unsigned char*)destination;
-	const unsigned char* source_pointer = (const unsigned char*)source;
+	unsigned char* destination_bytes    = (unsigned char*)destination;
+	const unsigned char* source_bytes   = (const unsigned char*)source;
 
-	for (size_t i = 0; i < size; i++) destination_pointer[i] = source_pointer[i];
+	for (size_t i = 0; i < size; i++) destination_bytes[i] = source_bytes[i];
 
 	return destination;
 }

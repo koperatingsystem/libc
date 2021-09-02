@@ -17,22 +17,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <limits.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
-static bool print(const char *data, size_t length)
+static bool print(const char* data, size_t length)
 {
-	const unsigned char* bytes = (const unsigned char*) data;
+	const unsigned char* bytes = (const unsigned char*)data;
 	for (size_t i = 0; i < length; i++) if (putchar(bytes[i]) == EOF) return false;
 
 	return true;
 }
 
-// some of this code looks... unsavoury
-// TODO: make it more presentable
+// TODO: some of this code looks... unsavoury, make it more presentable
 int printf(const char* restrict format, ...)
 {
 	va_list parameters;
@@ -42,7 +41,7 @@ int printf(const char* restrict format, ...)
 
 	while (*format != '\0')
     {
-		size_t maxrem = INT_MAX - written;
+		size_t maxrem = SIZE_MAX - written;
 
 		if (format[0] != '%' || format[1] == '%')
         {

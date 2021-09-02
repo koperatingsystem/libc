@@ -21,9 +21,9 @@ cmake_minimum_required(VERSION 3.0.0)
 
 project(kOS.libc LANGUAGES C VERSION 1.0.0)
 
-if(NOT ${CMAKE_C_COMPILER_ID} STREQUAL "Clang")
-    message(FATAL_ERROR "kOS.libc requires to be built using LLVM/clang.")
-endif()
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/BuildScripts)
+
+include(SystemCheck)
 
 add_library(kOS.libc STATIC
     ${CMAKE_CURRENT_LIST_DIR}/Includes/sys/cdefs.h
